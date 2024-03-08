@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="text1">
+        <h1 style="color: white;font-weight: bolder ;text-align: center;">To - Do App</h1>
+        <p style="color: white;font-size: 20px;text-align: center;">App With Filter and store data in Local-Storage </p>
+      </div>
+    <div>
+        <div>
+            <textarea [(ngModel)]="taskObj.taskName" class="form-control" placeholder="Add a new task......" style="width:700px;height: 100px;margin-top: 10px;"></textarea>
+        </div>
+    </div>
+    <div class="col">
+        <div class="date">
+            <input type="date" [(ngModel)]="taskObj.dueDate" class="form-control" placeholder="Due Date" style="height: 30px;width: 180px;">
+
+        </div><br>
+        <div class="comma">
+            <input type="text" [(ngModel)]="taskObj.tags" placeholder="Enter Comma Seperated tags" class="form-control" style="height: 30px;width: 180px;">
+        </div>
+        <div class="task">
+            <button class="add" (click)="createNewTask()">Add Task</button>
+        </div>
+    </div>
+    <div class="three">
+        <div class="tags">
+            <button class="filter" style="height: 30px;width: 120px;background-color: gray;color: white;border-radius: 20px;" 
+            (click)="setFilter('tags')" [ngClass]="filterType == 'tags'  ? 'btn-primary':'btn-secondary'">Filter By Tags</button>
+            <button class="filter" style="height: 30px;width: 120px;background-color: grey;color: white;border-radius: 20px;margin-left: 5px;" (click)="setFilter('showAll')"
+            [ngClass]="filterType == 'tags'  ? 'btn-primary':'btn-secondary'">Show All</button> 
+            <button class="filter"  style="height: 30px;width: 120px;background-color: grey;color: white;border-radius: 20px;margin-left: 5px;" (click)="setFilter('showCompleted')"
+            [ngClass]="filterType == 'tags'  ? 'btn-primary':'btn-secondary'">Show Completed</button> 
+        </div>
+    </div>
+    <div class="four" *ngIf="filterType == 'tags'">
+        <div>
+            <button class="twelve" style="height: 30px;width: 85px;color: antiquewhite;border-radius: 10px;margin-left: 5px;background-color: grey;" 
+            (click)="selectedTag = tag" (click)="filterTag(tag)" *ngFor="let tag of tagsList">{{tag}}</button>
+            {{selectedTag}}
+
+        </div>
+    </div>
+    <div class="row1" style="margin-top: 20px;">
+        <div>
+            <table>
+                <th>
+                    <tr>
+                        <th><strong style="color: crimson;">Index</strong></th>
+                        <th><strong style="margin-left: 80px;color: crimson;">Task Name</strong></th>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                        <th><strong style="margin-left: 60px;color: crimson;">Due Date</strong></th>
+
+                        <th class="text-center"><strong style="margin-left: 80px;color: crimson;">Tags</strong></th>
+                    </tr>
+                </th>
+                <tbody>
+                    <tr *ngFor="let task of taskList;let sr=index">
+                        <td style="text-align:left;">{{sr+1}}</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-1">
+                                    <input type="checkbox" [(ngModel)]="task.isCompleted"  (change)="onComplete()"
+                                     style="margin-left: -590px;font-size: 70px;">
+                                </div>
+                                <div class="topic1" style="margin-left:-570px;margin-top:-20px;">
+                                {{task.taskName}}
+                                </div>
+                                <div class="icons" style="margin-top:-23px;">
+                                    <button style="font-size:11px;color:white;background-color:red;" (click)="onRemove()">close</button>
+
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <h3>{{task.dueDate | date:'dd-MMM-yy'}}</h3></td>
+                        <td class="text-center">
+                            <button class="health" *ngFor="let tag of  getArrayFromCommaSeperatedString(task.tags)">{{tag}}</button>
+                            <!-- <button class="fitness">fitness</button>
+                            <button class="default">default</button> -->
+                        </td>
+                    </tr><br>
+                    <tr>
+                      
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<!--srcipt is done -->
+<!-- <script>
+    var totitems = [
+        { item: 'Market', tags: ['general', 'market'] },
+        { item: 'Scrum Meeting', tags: ["meeting", "calls"] },
+        { item: 'Interview', tags: ["calls"] }, { item: 'Scrum Ticket', tags: ["work", "defect"] },
+        { item: 'Wpork On defect', tags: ["defect"] }
+    ];
+    var myString = "work,defect";
+    var arrr = ['defect', 'calls']; 
+    const myArrayFiltered = totitems.filter((el) => {
+        return arrr.some((f) => {
+            return el.tags.includes(f);
+        });
+    }); 
+    console.log(myArrayFiltered);
+    debugger;
+</script>
+
+ -->
