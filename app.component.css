@@ -1,0 +1,56 @@
+ /* input.ng-invalid.ng-touched{
+    border-color: red;
+}  */
+
+ /* #a{
+    border: 3px solid blue;
+    height: 720px;
+    width: 800px;
+    background-color: gray;
+    margin-left: 200px;
+}
+#b{
+    border:3px solid grey ;
+    height: 650px;
+    width: 750px;
+    background-color: white;
+    margin-left: 20px;
+    margin-top: -1px;
+}
+ #c{
+    height:650px;
+    width:100px;
+    background-color:cornflowerblue;
+    margin-top: 0px;
+}
+img{
+    height: 320px;
+    width:350px;
+    margin-left: 170px;
+    margin-top: 0px;
+}
+h2{
+    margin-left: 160px;
+}
+.info{
+    margin-left: 550px;
+    margin-top: -320px;
+    height:200px;
+    width:140px;
+    font-size: 22px;
+    
+}
+ .btn{
+     margin-left: 360px;
+    margin-top: 90px; 
+    width: 170px;
+    height: 40px;
+    border-radius: 10px;
+    
+} 
+.btn-1{
+    height: 30px;
+    width: 140px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}  */
